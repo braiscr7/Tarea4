@@ -1,0 +1,41 @@
+améliorations
+1- La base de données est créée avec les IDBOOKS de type long
+2- La base de données est créée avec tous les champs NOT NULL
+3- La transaction d'insertion de livres est effectuée dans la couche des opérations de la base de données (OperacionesBD.java)
+4- Toutes les références à java.sql ont été supprimées de la classe Main
+
+
+
+Dans le modèle Singleton
+1- Il analyse si la connexion est fermée, dans ce cas, il renvoie également une nouvelle instance
+
+Structuration du projet
+Les classes du projet ont été structurées selon le modèle MVC (vue, contrôleur, modèle)
+La programmation logicielle en couches est une architecture dans laquelle nous cherchons à séparer le code ou la logique qui
+effectue des tâches commerciales (facturation, ventes) de logique de présentation graphique et de données.
+Également connu sous le nom de modèle MCV (vue, contrôleur, modèle).
+
+ 
+
+L'avantage de ce style est que le développement est facilité de réutilisation et d'entretien,
+car en cas de changement, seule la couche nécessaire est modifiée sans avoir à revoir tout le code.
+
+Couche logique de présentation :
+Il fait référence à la manière dont les informations sur le programme seront présentées à l'utilisateur. Le but est de séparer
+tous ceux qui sont montrés à l'utilisateur, cette couche n'a aucune connexion à la base de données et n'effectue pas d'opérations
+de toute nature n'affiche que des données à l'écran, la couche de présentation demande à travers des fonctions qui sont
+Ils s'exécutent dans la couche logique métier.
+ 
+Couche logique métier :
+C'est là que se trouvent les fonctions et les classes qui seront appelées via l'interface graphique.
+Reçoit les requêtes ou les événements de l'utilisateur, traite ces requêtes puis envoie la réponse à l'interface graphique,
+si c'est nécessaire
+Cette couche communiquera avec la couche de données, mais la couche métier ne se connecte pas à la base de données.
+il ne fait que recevoir des données ou les traiter. Ici, les règles ou fonctions commerciales sont exécutées et appelées, par exemple, la facturation,
+lister les produits, etc.
+
+couche de données
+Ici, nous aurons des classes et des fonctions qui se connectent à la base de données et c'est là que les transactions avec sql sont effectuées
+lire, insérer, modifier ou supprimer des informations dans la base de données.
+Ici, nous allons exécuter des requêtes sql afin qu'aucune des autres couches ne sache où se trouve la base de données, donc le
+La couche de présentation peut être sur un PC et les autres couches sur un serveur en tant que service est un logiciel Saas.
